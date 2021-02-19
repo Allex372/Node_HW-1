@@ -34,32 +34,6 @@ const filePathStar = path.join(__dirname + '/StarTask')
 // }
 // upFile(filePathStar)
 
-function upFile(filePathDinamic){
-    fs.readdir(filePathDinamic, (err, files) => {
-        if (err){
-            console.log(err)
-            return;
-        }
-        for (const file of files) {
-            fs.stat(path.join(filePathDinamic, file), (err1, stats) => {
-                if (stats.isDirectory()){
-                    upFile(path.join(filePathDinamic, file))
-                }else {
-                    fs.rename(path.join(filePathDinamic,file), path.join(filePathStar,file), err2 => {
-                        if (err2){
-                            console.log(err2)
-                        }
-                    })
-                }
-                if (err1){
-                    console.log(err1)
-                }
-            })
-        }
-    })
-
-}
-upFile(filePathStar)
 
 
 //Task1 MALE
